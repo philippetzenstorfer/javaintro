@@ -1,4 +1,4 @@
-package GUI;
+package gui.GUI;
 
 import org.eclipse.swt.widgets.Display;
 
@@ -81,9 +81,9 @@ public class MyGui {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				//System.out.println(getVorname().getText());
-			//	System.out.println(getNachname().getText());
+			    //System.out.println(getNachname().getText());
 				//System.out.println(getAdresse().getText());
-//				Person p= new Person();
+                //Person p= new Person();
 				try {
 				Mensch m = new Mensch(vorname_textfeld.getText(),nachname_textfeld.getText(),Integer.parseInt(plz_textfeld.getText()),adresse_textfeld.getText(),ort_textfeld.getText()); 
 					System.out.println(m);

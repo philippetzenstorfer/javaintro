@@ -1,6 +1,12 @@
 package data;
 
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Person {
 	
@@ -52,7 +58,17 @@ public class Person {
 	public static void setPersonenListe(ArrayList<Person> personenListe) {
 		PersonenListe = personenListe;
 	}
+	public static void write2JSON() throws IOException {
+		Writer writer = new FileWriter("C:\\temp\\output.json");
+		Gson gson = new GsonBuilder().serializeNulls().create();
+		gson.toJson(Person.getPersonenListe(), writer);
+		writer.flush();
+		writer.close();
+
+	}
 	
+	public static void readFromJSON() {
+		//personenListe = readFromJSON
 
 	
 	
@@ -61,7 +77,7 @@ public class Person {
 	
 	
 	
-	
+	}
 	
 }
 
