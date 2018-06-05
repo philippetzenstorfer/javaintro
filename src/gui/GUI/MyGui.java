@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import data.Mensch;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -35,6 +36,8 @@ public class MyGui {
 	private Text plz_textfeld;
 	private Label lblOrt;
 	private Text ort_textfeld;
+	private Button btnSave;
+
 
 	/**
 	 * Launch the application.
@@ -157,9 +160,49 @@ public class MyGui {
 				shell.close();
 			}
 		});
-		btnAus.setBounds(437, 318, 75, 25);
+		btnAus.setBounds(228, 194, 75, 25);
 		btnAus.setText("Aus");
+		
+		btnSave = new Button(shell, SWT.NONE);
+		btnSave.setBounds(189, 285, 75, 25);
+		btnSave.setText("Save");
+		btnSave.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					Mensch.SaveList();
+					
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				MessageBox save = new MessageBox(shell, SWT.ICON_INFORMATION|SWT.OK);
+				save.setText("ListSave");
+				save.setMessage("Bis jetzt " + Mensch.getMenschlist().size() + " gespeicherte Kontakte." );
+				save.open();
 
+			}
+		});
+		btnSave.setBounds(202, 194, 75, 25);
+		btnSave.setText("Save");
+		
+		Button btnRead = new Button(shell, SWT.NONE);
+		btnRead.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					Mensch.ReadList();
+					
+					
+				} catch (FileNotFoundException e1) {
+					System.out.println("Fehler!");
+				}
+			}
+		});
+		btnRead.setBounds(10, 318, 75, 25);
+		btnRead.setText("Read");
+		
+		
 	}
 	protected void clearMask() {
 		adresse_textfeld.setText("");
@@ -194,6 +237,7 @@ public class MyGui {
 	public Text getOrt_textfeld() {
 		return ort_textfeld;
 	}
-	
-	
+	public Button getBtnSave() {
+		return btnSave;
+	}
 }
