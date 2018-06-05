@@ -4,7 +4,6 @@ import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.internal.actions.ClearWorkingSetAction;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
